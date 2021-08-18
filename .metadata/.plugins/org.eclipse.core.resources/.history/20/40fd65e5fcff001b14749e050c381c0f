@@ -1,0 +1,46 @@
+/**
+ * 
+ */
+package com.salesubscription.service.salesubscriptionservice.domain;
+
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+/**
+ * @author mahanraj
+ *
+ */
+@Entity
+@Table(name = "subscription")
+public class Subscription {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "subscription_id")
+	private Integer subscriptionid;
+	
+	private String subsriberId;
+	
+	private String nsCode;
+	
+	private String externalId;
+	
+	private String type;
+	
+	private String customMessage;
+	
+	private Boolean active; 
+	
+	private Date createdTimeStamp;
+	
+	private Date latsModifiedTime;
+	
+	private Date terminated;
+	
+
+}

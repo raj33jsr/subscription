@@ -1,0 +1,17 @@
+/**
+ * 
+ */
+package com.salesubscription.service.salesubscriptionservice.domain;
+
+import javax.persistence.Entity;
+
+/**
+ * @author mahanraj
+ *
+ */
+@Entity
+public class Subscription {
+	private Integer subscriptionid;
+	
+
+}

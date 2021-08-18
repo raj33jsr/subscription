@@ -1,0 +1,30 @@
+/**
+ * 
+ */
+package com.salesubscription.service.salesubscriptionservice.domain;
+
+import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+/**
+ * @author mahanraj
+ *
+ */
+@Entity
+@Table(name = "")
+public class Subscription {
+	private Integer subscriptionid;
+	private String subsriberId;
+	private String nsCode;
+	private String externalId;
+	private String type;
+	private String customMessage;
+	private Boolean active; 
+	private Date createdTimeStamp;
+	private Date latsModifiedTime;
+	private Date terminated;
+	
+
+}

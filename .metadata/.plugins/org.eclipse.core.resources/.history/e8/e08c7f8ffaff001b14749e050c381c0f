@@ -1,0 +1,12 @@
+/**
+ * 
+ */
+package com.salesubscription.service.salesubscriptionservice.domain;
+
+/**
+ * @author mahanraj
+ *
+ */
+public class Subscription {
+
+}
