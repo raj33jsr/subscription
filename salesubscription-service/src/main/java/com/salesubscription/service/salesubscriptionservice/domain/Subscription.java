@@ -4,12 +4,17 @@
 package com.salesubscription.service.salesubscriptionservice.domain;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -22,7 +27,7 @@ import javax.persistence.TemporalType;
 @Table(name = "subscription")
 public class Subscription {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "subscription_id")
 	private Integer subscriptionid;
 	
@@ -55,6 +60,10 @@ public class Subscription {
 	@Column(name = "terminated")
 	@Temporal(TemporalType.DATE)	
 	private Date terminated;
+	
+	@OneToMany
+    private List<Period> period = null;
+
 
 	public Integer getSubscriptionid() {
 		return subscriptionid;
@@ -134,6 +143,15 @@ public class Subscription {
 
 	public void setTerminated(Date terminated) {
 		this.terminated = terminated;
+	}
+	
+
+	public List<Period> getPeriod() {
+		return period;
+	}
+
+	public void setPeriod(List<Period> period) {
+		this.period = period;
 	}
 
 	@Override
