@@ -43,6 +43,7 @@ public class Period {
 	private String externalId;
 	
 	@ManyToOne
+	@JoinColumn(name="subscriptionid")
 	private Subscription subscription;
 
 	public Integer getPeriodId() {
