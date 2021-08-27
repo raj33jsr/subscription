@@ -4,15 +4,21 @@
 package com.salesubscription.service.salesubscriptionservice.domain;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * @author mahanraj
@@ -55,6 +61,11 @@ public class Subscription {
 	@Column(name = "terminated")
 	@Temporal(TemporalType.DATE)	
 	private Date terminated;
+	
+	@OneToMany(mappedBy="subscription",
+			cascade=CascadeType.ALL)
+	//@JoinColumn(name = "subscription_id")
+	private List<Period> periods ;
 
 	public Integer getSubscriptionid() {
 		return subscriptionid;
@@ -135,16 +146,32 @@ public class Subscription {
 	public void setTerminated(Date terminated) {
 		this.terminated = terminated;
 	}
+	
+	
+
+	/**
+	 * @return the periods
+	 */
+	//@JsonIgnore
+	public List<Period> getPeriods() {
+		return periods;
+	}
+
+	/**
+	 * @param periods the periods to set
+	 */
+	public void setPeriods(List<Period> periods) {
+		this.periods = periods;
+	}
 
 	@Override
 	public String toString() {
 		return "Subscription [subscriptionid=" + subscriptionid + ", subsriberId=" + subsriberId + ", nsCode=" + nsCode
 				+ ", externalId=" + externalId + ", type=" + type + ", customMessage=" + customMessage + ", active="
 				+ active + ", createdTimeStamp=" + createdTimeStamp + ", latsModifiedTime=" + latsModifiedTime
-				+ ", terminated=" + terminated + "]";
+				+ ", terminated=" + terminated + ", periods=" + periods + "]";
 	}
-	
-	
-	
+
+
 
 }
