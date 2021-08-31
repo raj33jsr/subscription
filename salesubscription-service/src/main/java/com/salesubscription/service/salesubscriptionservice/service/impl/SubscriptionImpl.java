@@ -4,6 +4,7 @@
 package com.salesubscription.service.salesubscriptionservice.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,11 @@ public class SubscriptionImpl {
 	public List<Subscription> getSubscriptions(){
 		List<Subscription> subscriptions = subscriptionDao.findAll();
 		return subscriptions;
+	}
+	
+	public Subscription getSubscriptionById(Integer subscriptionId){
+		Optional<Subscription> subs = subscriptionDao.findById(subscriptionId);
+		return subs.get();
 	}
 
 }
