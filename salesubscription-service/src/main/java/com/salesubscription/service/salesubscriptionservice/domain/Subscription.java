@@ -41,7 +41,7 @@ public class Subscription {
 	@Column(name = "external_id")
 	private String externalId;
 	
-	@Column(name = "type")
+	@Column(name = "subscriptiontype")
 	private String type;
 	
 	@Column(name = "custommessage")
@@ -58,7 +58,7 @@ public class Subscription {
 	@Temporal(TemporalType.DATE)
 	private Date latsModifiedTime;
 	
-	@Column(name = "terminated")
+	@Column(name = "terminatedtimestamp")
 	@Temporal(TemporalType.DATE)	
 	private Date terminated;
 	
