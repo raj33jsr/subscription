@@ -34,13 +34,13 @@ public class Period {
 	@Column(name ="subscription_id")
 	private Integer subscriptionId;
 	
-	@Column(name = "from")
+	@Column(name = "fromdate")
 	@Temporal(TemporalType.DATE)
-	private Date from;
+	private Date fromDate;
 	
-	@Column(name = "until")
+	@Column(name = "todate")
 	@Temporal(TemporalType.DATE)
-	private Date until;
+	private Date toDate;
 	
 	@Column(name = "createdtimestamp")
 	@Temporal(TemporalType.DATE)
@@ -86,34 +86,7 @@ public class Period {
 		this.subscriptionId = subscriptionId;
 	}
 
-	/**
-	 * @return the from
-	 */
-	public Date getFrom() {
-		return from;
-	}
-
-	/**
-	 * @param from the from to set
-	 */
-	public void setFrom(Date from) {
-		this.from = from;
-	}
-
-	/**
-	 * @return the until
-	 */
-	public Date getUntil() {
-		return until;
-	}
-
-	/**
-	 * @param until the until to set
-	 */
-	public void setUntil(Date until) {
-		this.until = until;
-	}
-
+	
 	/**
 	 * @return the createdTimeStamp
 	 */
@@ -173,13 +146,33 @@ public class Period {
 	public void setSubscription(Subscription subscription) {
 		this.subscription = subscription;
 	}
+	
+	
+
+	public Date getFromDate() {
+		return fromDate;
+	}
+
+	public void setFromDate(Date fromDate) {
+		this.fromDate = fromDate;
+	}
+
+	public Date getToDate() {
+		return toDate;
+	}
+
+	public void setToDate(Date toDate) {
+		this.toDate = toDate;
+	}
 
 	@Override
 	public String toString() {
-		return "Period [periodId=" + periodId + ", subscriptionId=" + subscriptionId + ", from=" + from + ", until="
-				+ until + ", createdTimeStamp=" + createdTimeStamp + ", externalId=" + externalId + ", customMessage="
-				+ customMessage + ", subscription=" + subscription + "]";
+		return "Period [periodId=" + periodId + ", subscriptionId=" + subscriptionId + ", fromDate=" + fromDate
+				+ ", toDate=" + toDate + ", createdTimeStamp=" + createdTimeStamp + ", externalId=" + externalId
+				+ ", customMessage=" + customMessage + ", subscription=" + subscription + "]";
 	}
+
+	
 
 	
 	
