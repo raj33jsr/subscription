@@ -28,7 +28,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "subscription")
 public class Subscription {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "subscription_id")
 	private Integer subscriptionid;
 	
@@ -65,9 +65,7 @@ public class Subscription {
 	@OneToMany(mappedBy="subscription",
 			cascade=CascadeType.ALL)
 	//@JoinColumn(name = "subscription_id")
-
-    private List<Period> periods;
-
+	private List<Period> periods ;
 
 	public Integer getSubscriptionid() {
 		return subscriptionid;
@@ -149,7 +147,6 @@ public class Subscription {
 		this.terminated = terminated;
 	}
 	
-
 	
 
 	/**
@@ -174,6 +171,9 @@ public class Subscription {
 				+ active + ", createdTimeStamp=" + createdTimeStamp + ", latsModifiedTime=" + latsModifiedTime
 				+ ", terminated=" + terminated + ", periods=" + periods + "]";
 	}
+
+	
+
 
 
 }

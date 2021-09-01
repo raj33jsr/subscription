@@ -1,10 +1,12 @@
+/**
+ * 
+ */
 package com.salesubscription.service.salesubscriptionservice.domain;
 
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,7 +27,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Period {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "period_id")
 	private Integer periodId;
 	
@@ -47,58 +49,44 @@ public class Period {
 	@Column(name = "external_id")
 	private String externalId;
 	
-
 	@Column(name = "custommessage")
 	private String customMessage;
 	
 	@ManyToOne
+	
 	@JoinColumn(name="subscription_id",insertable=false, updatable=false)
+	
 	private Subscription subscription;
 
 	/**
 	 * @return the periodId
 	 */
-	public void setPeriodId(Integer periodId) {
-		this.periodId = periodId;
-	}
-
-	public Subscription getSubscription() {
-		return subscription;
-	}
-
-	public void setSubscription(Subscription subscription) {
-		this.subscription = subscription;
-	}
-
 	public Integer getPeriodId() {
 		return periodId;
 	}
 
+	/**
+	 * @param periodId the periodId to set
+	 */
+	public void setPeriodId(Integer periodId) {
+		this.periodId = periodId;
+	}
+
+	/**
+	 * @return the subscriptionId
+	 */
 	public Integer getSubscriptionId() {
 		return subscriptionId;
 	}
 
+	/**
+	 * @param subscriptionId the subscriptionId to set
+	 */
 	public void setSubscriptionId(Integer subscriptionId) {
 		this.subscriptionId = subscriptionId;
 	}
 
-	public Date getFromDate() {
-		return fromDate;
-	}
-
-	public void setFromDate(Date fromDate) {
-		this.fromDate = fromDate;
-	}
-
 	
-	public Date getToDate() {
-		return toDate;
-	}
-
-	public void setToDate(Date toDate) {
-		this.toDate = toDate;
-	}
-
 	/**
 	 * @return the createdTimeStamp
 	 */
@@ -116,8 +104,6 @@ public class Period {
 	/**
 	 * @return the externalId
 	 */
-
-	
 	public String getExternalId() {
 		return externalId;
 	}
@@ -142,6 +128,42 @@ public class Period {
 	public void setCustomMessage(String customMessage) {
 		this.customMessage = customMessage;
 	}
+	
+	
+	
+
+	/**
+	 * @return the subscription
+	 */
+	@JsonIgnore
+	public Subscription getSubscription() {
+		return subscription;
+	}
+
+	/**
+	 * @param subscription the subscription to set
+	 */
+	public void setSubscription(Subscription subscription) {
+		this.subscription = subscription;
+	}
+	
+	
+
+	public Date getFromDate() {
+		return fromDate;
+	}
+
+	public void setFromDate(Date fromDate) {
+		this.fromDate = fromDate;
+	}
+
+	public Date getToDate() {
+		return toDate;
+	}
+
+	public void setToDate(Date toDate) {
+		this.toDate = toDate;
+	}
 
 	@Override
 	public String toString() {
@@ -150,7 +172,9 @@ public class Period {
 				+ ", customMessage=" + customMessage + ", subscription=" + subscription + "]";
 	}
 
-		
+	
 
+	
+	
 	
 }
