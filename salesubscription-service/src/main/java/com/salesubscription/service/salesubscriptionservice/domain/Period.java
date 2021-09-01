@@ -142,6 +142,13 @@ public class Period {
 	public void setCustomMessage(String customMessage) {
 		this.customMessage = customMessage;
 	}
+
+	@Override
+	public String toString() {
+		return "Period [periodId=" + periodId + ", subscriptionId=" + subscriptionId + ", fromDate=" + fromDate
+				+ ", toDate=" + toDate + ", createdTimeStamp=" + createdTimeStamp + ", externalId=" + externalId
+				+ ", customMessage=" + customMessage + ", subscription=" + subscription + "]";
+	}
 	
 	
 	
@@ -150,12 +157,7 @@ public class Period {
 	 * @return the subscription
 	 */
 
-	@Override
-	public String toString() {
-		return "Period [periodId=" + periodId + ", subscriptionId=" + subscriptionId + ", from=" + fromDate + ", until="
-				+ toDate + ", createdTimeStamp=" + createdTimeStamp + ", externalId=" + externalId + ", customMessage="
-				+ customMessage + ", subscription=" + subscription + "]";
-	}
+	
 
 	
 }
