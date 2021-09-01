@@ -175,9 +175,5 @@ public class Subscription {
 				+ ", terminated=" + terminated + ", periods=" + periods + "]";
 	}
 
-	
-	
-
-
 
 }

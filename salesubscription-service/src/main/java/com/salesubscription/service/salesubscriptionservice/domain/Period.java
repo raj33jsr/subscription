@@ -149,15 +149,8 @@ public class Period {
 				+ ", toDate=" + toDate + ", createdTimeStamp=" + createdTimeStamp + ", externalId=" + externalId
 				+ ", customMessage=" + customMessage + ", subscription=" + subscription + "]";
 	}
-	
-	
-	
 
-	/**
-	 * @return the subscription
-	 */
-
-	
+		
 
 	
 }
