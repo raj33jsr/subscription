@@ -12,10 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-<<<<<<< HEAD
 import javax.persistence.JoinColumn;
-=======
->>>>>>> 6e32553a7e42c43bafcb21ca5abb83a6d7de7123
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -67,13 +64,10 @@ public class Subscription {
 	
 	@OneToMany(mappedBy="subscription",
 			cascade=CascadeType.ALL)
-<<<<<<< HEAD
 	//@JoinColumn(name = "subscription_id")
-	private List<Period> periods ;
-=======
-    private List<Period> period = null;
 
->>>>>>> 6e32553a7e42c43bafcb21ca5abb83a6d7de7123
+    private List<Period> periods;
+
 
 	public Integer getSubscriptionid() {
 		return subscriptionid;
@@ -155,7 +149,7 @@ public class Subscription {
 		this.terminated = terminated;
 	}
 	
-<<<<<<< HEAD
+
 	
 
 	/**
@@ -171,15 +165,6 @@ public class Subscription {
 	 */
 	public void setPeriods(List<Period> periods) {
 		this.periods = periods;
-=======
-
-	public List<Period> getPeriod() {
-		return period;
-	}
-
-	public void setPeriod(List<Period> period) {
-		this.period = period;
->>>>>>> 6e32553a7e42c43bafcb21ca5abb83a6d7de7123
 	}
 
 	@Override
@@ -189,6 +174,8 @@ public class Subscription {
 				+ active + ", createdTimeStamp=" + createdTimeStamp + ", latsModifiedTime=" + latsModifiedTime
 				+ ", terminated=" + terminated + ", periods=" + periods + "]";
 	}
+
+	
 
 
 
