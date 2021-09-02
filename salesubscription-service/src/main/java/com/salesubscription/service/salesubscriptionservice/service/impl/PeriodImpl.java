@@ -19,8 +19,8 @@ public class PeriodImpl {
 		return period.get();
 	}
 	
-	public void savePeriod(Period period) {
-		periodDao.save(period);
+	public Period savePeriod(Period period) {
+		return periodDao.save(period);
 	}
 	
 }

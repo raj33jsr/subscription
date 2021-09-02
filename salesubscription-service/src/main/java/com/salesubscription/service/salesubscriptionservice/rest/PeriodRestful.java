@@ -1,6 +1,8 @@
 package com.salesubscription.service.salesubscriptionservice.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,10 +31,11 @@ public class PeriodRestful {
 	}
 	
 	@PostMapping("")
-	public void savePeriod(@RequestBody Period period) {
+	public ResponseEntity<Period> savePeriod(@RequestBody Period period) {
 		Subscription sub = subsImpl.getSubscriptionById(period.getSubscriptionId());
 		period.setSubscription(sub);
-		periodImpl.savePeriod(period);
+		Period periodResp = periodImpl.savePeriod(period);
+		return new ResponseEntity<Period>(periodResp,HttpStatus.CREATED);
 	}
 	
 	
