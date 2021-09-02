@@ -5,12 +5,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.subscription.sale.domain.Subscription;
-import com.subscription.sale.domain.SubscriptionSales;
-import com.subscription.sale.service.SubscriptionClient;
+import com.subscription.sale.domain.SalesAndSubscription;
+import com.subscription.sale.integration.SubscriptionClient;
+import com.subscription.sale.service.SalesAndSubscriptionService;
 
 @RestController
 @RequestMapping("/api/subscription/sales/")
@@ -20,12 +22,19 @@ public class SubscriptionSaleController {
 	private SubscriptionClient subscriptionClient;
 	
 	
+	@Autowired
+	private SalesAndSubscriptionService salesAndSubscriptionService;
+	
 	@GetMapping("{saleId}")
-	public ResponseEntity<SubscriptionSales> getSubscriptionSalesById(@PathVariable(name = "saleId") Integer saleId) {
-		Subscription subscription = subscriptionClient.getSubscriptionById(saleId);
-		SubscriptionSales subscriptionSales = new SubscriptionSales();
-		subscriptionSales.setSubscriptionId(subscription.getSubscriptionid());
-		return new ResponseEntity<SubscriptionSales>(subscriptionSales,HttpStatus.OK);
+	public ResponseEntity<SalesAndSubscription> getSalesAndSubscriptionById(@PathVariable(name = "saleId") Integer saleId) {
+		SalesAndSubscription salesAndSubscriptionResp = salesAndSubscriptionService.getSalesAndSubscriptionById(saleId);
+		return new ResponseEntity<SalesAndSubscription>(salesAndSubscriptionResp,HttpStatus.OK);
+	}
+	
+	@PostMapping(path = "subscriptionandsales/")
+	public ResponseEntity<SalesAndSubscription> createSubscription(@RequestBody SalesAndSubscription salesAndSubscription) {
+		SalesAndSubscription salesAndSubscriptionResp = salesAndSubscriptionService.createSalesAndSubscription(salesAndSubscription);
+		return new ResponseEntity<SalesAndSubscription>(salesAndSubscriptionResp,HttpStatus.CREATED);
 	}
 	
 }

@@ -1,4 +1,4 @@
-package com.subscription.sale.service;
+package com.subscription.sale.integration;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,4 +13,7 @@ public interface SubscriptionClient {
 	@RequestMapping(method = RequestMethod.GET, value = "{id}", produces = "application/json")
     Subscription getSubscriptionById(@PathVariable("id") Integer subscriptionId);
 	
+	
+	@RequestMapping(method = RequestMethod.POST, value = "/")
+    Subscription createSubscription(Subscription Subscription);
 }
