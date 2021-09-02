@@ -1,0 +1,134 @@
+
+CREATE TABLE `subscription` (
+`subscription_id` int(11) NOT NULL AUTO_INCREMENT,
+`subscriber_id` varchar(45) DEFAULT NULL,
+`nscode` varchar(45) DEFAULT NULL,
+`subscriptiontype` varchar(45) DEFAULT NULL,
+`external_id` varchar(45) DEFAULT NULL,
+`custommessage` varchar(100) DEFAULT NULL,
+`createdtimestamp` datetime DEFAULT NULL,
+`updatedtimestamp` datetime DEFAULT NULL,
+`terminatedtimestamp` datetime DEFAULT NULL,
+`active` tinyint(4) DEFAULT NULL,
+PRIMARY KEY (`subscription_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `subscription`.`period` (
+`period_id` INT NOT NULL AUTO_INCREMENT,
+`subscription_id` INT NULL,
+`fromDate` DATETIME NULL,
+`toDate` DATETIME NULL,
+`createdtimestamp` DATETIME NULL,
+`external_id` VARCHAR(45) NULL,
+`custommessage` VARCHAR(100) NULL,
+PRIMARY KEY (`period_id`),
+INDEX `period_subscription_fk_idx` (`subscription_id` ASC),
+CONSTRAINT `period_subscription_fk`
+FOREIGN KEY (`subscription_id`)
+REFERENCES `subscription`.`subscription` (`subscription_id`)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION);
+
+
+INSERT INTO `subscription`.`subscription`
+(`subscription_id`,
+`subscriber_id`,
+`nscode`,
+`subscriptiontype`,
+`external_id`,
+`custommessage`,
+`createdtimestamp`,
+`updatedtimestamp`,
+`active`)
+VALUES
+(1,
+'chetan.zawar',
+'abc',
+'adult',
+'servicepoint',
+'season',
+curdate(),
+curdate(),
+1);
+
+
+INSERT INTO `subscription`.`period`
+(`period_id`,
+`subscription_id`,
+`fromdate`,
+`todate`,
+`createdtimestamp`,
+`external_id`,
+`custommessage`)
+VALUES
+(1,
+'1',
+curdate(),
+curdate(),
+curdate(),
+'servicepoint',
+'season loaded ');
+
+
+CREATE TABLE `sales`.`subscription_sales` (
+  `sale_id` INT NOT NULL,
+  `subscription_id` INT NULL,
+  `subscriber_id` VARCHAR(45) NULL,
+  `subscription_type` VARCHAR(45) NULL,
+  `createdtimestamp` DATE NULL,
+  PRIMARY KEY (`sale_id`));
+
+alter table subscription_sales modify column sale_id int NOT NULL AUTO_INCREMENT;
+  
+ INSERT INTO `sales`.`subscription_sales`
+(`sale_id`,
+`subscription_id`,
+`subscriber_id`,
+`subscription_type`,
+`createdtimestamp`
+)
+VALUES
+(1,
+'1',
+'chetan.zawar',
+'new',
+curdate()); 
+
+
+
+subscription_sales_json
+
+{
+    "subscription": {
+        "subscriptionid": 3,
+        "subsriberId": "rajesh.mahanty",
+        "nsCode": "abc",
+        "externalId": "servicepoint",
+        "type": "adult",
+        "customMessage": "season",
+        "active": true,
+        "createdTimeStamp": "2021-09-02T00:00:00.000+00:00",
+        "latsModifiedTime": "2021-09-02T00:00:00.000+00:00",
+        "terminated": null,
+        "periods": [
+            {
+                "periodId": 2,
+                "subscriptionId": 3,
+                "fromDate": "2021-09-02T00:00:00.000+00:00",
+                "toDate": "2021-09-02T00:00:00.000+00:00",
+                "createdTimeStamp": "2021-09-02T00:00:00.000+00:00",
+                "externalId": "servicepoint",
+                "customMessage": "season loaded "
+            }
+        ]
+    },
+    "subscriptionSales": {
+        "saleId": 3,
+        "subscriptionId": 3,
+        "subsriberId": "rajesh.mahanty",
+        "subscriptionType": "new",
+        "createdTimeStamp": "2021-08-02"
+    }
+}
+  
