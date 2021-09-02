@@ -5,8 +5,6 @@ package com.salesubscription.service.salesubscriptionservice.rest;
 
 import java.util.List;
 
-import javax.websocket.server.PathParam;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.salesubscription.service.salesubscriptionservice.common.ServiceConstant;
 import com.salesubscription.service.salesubscriptionservice.domain.Subscription;
+import com.salesubscription.service.salesubscriptionservice.exception.BadRequestException;
 import com.salesubscription.service.salesubscriptionservice.exception.ResourceNotFoundException;
 import com.salesubscription.service.salesubscriptionservice.service.impl.SubscriptionImpl;
 
@@ -60,6 +60,9 @@ public class SubscriptionRestful {
 	@PutMapping("{id}")
 	public Subscription updateSubscriptionById(@PathVariable(name="id") Integer id , @RequestBody Subscription subscription) {
 		try {
+			if(id != subscription.getSubscriptionid()) {
+				throw new BadRequestException(ServiceConstant.SUBSCRIPTION_ID_MISSMATCH, "id and subscription id is different");
+			}
 		Subscription sbscriptionResp = subscriptionImpl.updateSubscriptionById(id,subscription);
 		return sbscriptionResp;
 		}catch(ResourceNotFoundException rne) {
