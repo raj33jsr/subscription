@@ -15,8 +15,9 @@ public class SubscriptionSalesService {
 	private SubscriptionSalesDao subscriptionSalesDao;
 	
 	public SubscriptionSales createSubscriptionSales(SubscriptionSales subscriptionSales) {
-		SubscriptionSales subscriptionSalesResp = subscriptionSalesDao.save(subscriptionSales);
-		return subscriptionSalesResp;
+		throw new RuntimeException();
+		//SubscriptionSales subscriptionSalesResp = subscriptionSalesDao.save(subscriptionSales);
+		//return subscriptionSalesResp;
 	}
 	
 	public SubscriptionSales getSubscriptionSalesById(Integer saleId) {
