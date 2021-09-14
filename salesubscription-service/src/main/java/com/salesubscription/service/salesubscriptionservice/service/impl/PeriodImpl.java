@@ -19,8 +19,13 @@ public class PeriodImpl {
 		return period.get();
 	}
 	
+<<<<<<< HEAD
 	public void savePeriod(Period period) {
 		periodDao.save(period);
+=======
+	public Period savePeriod(Period period) {
+		return periodDao.save(period);
+>>>>>>> b30674e7e38e26421c22329441168b65ac5c393e
 	}
 	
 }
