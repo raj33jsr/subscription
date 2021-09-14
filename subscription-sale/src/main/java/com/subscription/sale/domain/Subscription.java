@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.salesubscription.service.salesubscriptionservice.domain;
+package com.subscription.sale.domain;
 
 import java.util.Date;
 import java.util.List;
@@ -24,47 +24,30 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  * @author mahanraj
  *
  */
-@Entity
-@Table(name = "subscription")
 public class Subscription {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "subscription_id")
+	
 	private Integer subscriptionid;
 	
-	@Column(name = "subscriber_id")
+	
 	private String subsriberId;
 	
-	@Column(name = "nscode")
 	private String nsCode;
 	
-	@Column(name = "external_id")
+	
 	private String externalId;
 	
-	@Column(name = "subscriptiontype")
 	private String type;
 	
-	@Column(name = "custommessage")
 	private String customMessage;
 	
-	@Column(name = "active")
 	private Boolean active;
 	
-	@Column(name = "createdtimestamp")
-	@Temporal(TemporalType.DATE)
 	private Date createdTimeStamp;
 	
-	@Column(name = "updatedtimestamp")
-	@Temporal(TemporalType.DATE)
 	private Date latsModifiedTime;
 	
-	@Column(name = "terminatedtimestamp")
-	@Temporal(TemporalType.DATE)	
 	private Date terminated;
 	
-	@OneToMany(mappedBy="subscription",
-			cascade=CascadeType.ALL)
-	//@JoinColumn(name = "subscription_id")
 	private List<Period> periods ;
 
 	public Integer getSubscriptionid() {
